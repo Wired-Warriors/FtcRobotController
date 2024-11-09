@@ -63,6 +63,7 @@ public class FirstOPMode extends LinearOpMode {
     private DcMotor MotorR1 = null;
     private DcMotor MotorL2 = null;
     private DcMotor MotorR2 = null;
+    private DcMotor ViperSlide = null;
 
     @Override
     public void runOpMode() {
@@ -80,6 +81,7 @@ public class FirstOPMode extends LinearOpMode {
         MotorR1 = hardwareMap.get(DcMotor.class, "Motor R1");
         MotorL2  = hardwareMap.get(DcMotor.class, "Motor L2");
         MotorR2  = hardwareMap.get(DcMotor.class, "Motor R2");
+        ViperSlide  = hardwareMap.get(DcMotor.class, "Viper Slide");
         // To drive forward, most robots need the motor on one side to be reversed, because the axles point in opposite directions.
         // Pushing the left stick forward MUST make robot go forward. So adjust these two lines based on your first test drive.
         // Note: The settings here assume direct drive on left and right wheels.  Gear Reduction or 90 Deg drives may require direction flips
@@ -87,7 +89,7 @@ public class FirstOPMode extends LinearOpMode {
         MotorR1.setDirection(DcMotor.Direction.FORWARD);
         MotorL2.setDirection(DcMotor.Direction.FORWARD);
         MotorR2.setDirection(DcMotor.Direction.FORWARD);
-
+        ViperSlide.setDirection(DcMotor.Direction.FORWARD);
         // Wait for the game to start (driver presses START)
         waitForStart();
         runtime.reset();
@@ -122,7 +124,11 @@ public class FirstOPMode extends LinearOpMode {
             // - This requires no math, but it is hard to drive forward slowly and keep straight.
             // leftPower  = -gamepad1.left_stick_y ;
             // rightPower = -gamepad1.right_stick_y ;
+//if (gamepad1.right_trigger == 1) {
+    //ViperSlide.setPower(1);
 
+
+//}
             // Send calculated power to wheels
             MotorL1.setPower(leftPower);
             MotorL2.setPower(leftPower);
